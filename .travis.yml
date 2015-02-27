@@ -1,0 +1,43 @@
+language: node_js
+node_js:
+  - "0.10"
+before_install:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sudo apt-get update -qq
+  - curl http://nginx.org/keys/nginx_signing.key | sudo apt-key add -
+  - echo "deb http://nginx.org/packages/ubuntu/ precise nginx" | sudo tee -a /etc/apt/sources.list
+  - echo "deb-src http://nginx.org/packages/ubuntu/ precise nginx" | sudo tee -a /etc/apt/sources.list
+  - sudo apt-get update -qq
+  - sudo apt-get install nginx
+  - sudo nginx -s stop
+  - npm install -g grunt-cli
+  - echo "$TRAVIS_BUILD_DIR"
+before_script:
+  - "cp test/travis/config-travis.js src/js/config.js"
+  - "cp test/travis/ripple-travis.txt ripple.txt"
+  - npm install -g bower
+  - bower install
+  - npm install -g se-interpreter
+  - sudo nginx -c "$TRAVIS_BUILD_DIR/test/travis/nginx.conf"
+  - curl http://localhost:9002
+  - grunt connect:sauce &
+  - sudo ps aux
+  - sudo ls -l /proc/*/exe || true
+script: "./test/travis-run.sh"
+after_script:
+  - echo "nginx/error:"
+  - sudo cat /var/log/nginx/error.log
+  - echo "nginx/access:"
+  - sudo cat /var/log/nginx/access.log
+  - echo "config.js:"
+  - curl http://localhost:9001/config.js
+  - echo "ripple.txt:"
+  - curl http://localhost:9001/ripple.txt
+  - curl http://localhost:9001/ripple.txt
+env:
+  global: 
+    - SAUCE_USERNAME=tonga
+    - secure: "VJFHj5fr46Qf7h34xa/W6FmGvknPH57eQLJoEjKlZUYn0EGx9EliCdENfzAbtr3e4GnNvQh6X2bLA/lB7TRzoD84oyGkllkMayevQm/dViJbUBQsl7HOa6VwUwugW+o7T3+vPM4y5qqFv1B/fs3Fthl+eKUatccy9qK4xra1Hso="
+
+
