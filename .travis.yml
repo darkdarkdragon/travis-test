@@ -17,6 +17,8 @@ before_install:
 before_script:
   - "cp test/travis/config-travis.js src/js/config.js"
   - "cp test/travis/ripple-travis.txt ripple.txt"
+  - ls -l "$TRAVIS_BUILD_DIR"
+  - cat "$TRAVIS_BUILD_DIR/test/travis/nginx.conf"
   - sudo nginx -c "$TRAVIS_BUILD_DIR/test/travis/nginx.conf"
   - curl http://localhost:9002
   - sudo ps aux
