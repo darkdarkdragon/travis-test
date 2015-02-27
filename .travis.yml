@@ -13,15 +13,12 @@ before_install:
   - sudo nginx -s stop
   - npm install -g grunt-cli
   - echo "$TRAVIS_BUILD_DIR"
+  - echo "$SAUCE_USERNAME"
 before_script:
   - "cp test/travis/config-travis.js src/js/config.js"
   - "cp test/travis/ripple-travis.txt ripple.txt"
-  - npm install -g bower
-  - bower install
-  - npm install -g se-interpreter
   - sudo nginx -c "$TRAVIS_BUILD_DIR/test/travis/nginx.conf"
   - curl http://localhost:9002
-  - grunt connect:sauce &
   - sudo ps aux
   - sudo ls -l /proc/*/exe || true
 script: "./test/travis-run.sh"
