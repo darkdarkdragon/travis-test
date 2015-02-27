@@ -20,7 +20,8 @@ before_script:
   - ls -l "$TRAVIS_BUILD_DIR"
   - cat "$TRAVIS_BUILD_DIR/test/travis/nginx.conf"
   - sudo nginx -c "$TRAVIS_BUILD_DIR/test/travis/nginx.conf"
-  - curl http://localhost:9002
+  - curl -i http://localhost:9002
+  - curl -i http://localhost:9002/
   - sudo ps aux
   - sudo ls -l /proc/*/exe || true
 script: "./test/travis-run.sh"
