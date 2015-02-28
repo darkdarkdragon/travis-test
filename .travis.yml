@@ -32,14 +32,14 @@ before_script:
   - cat "$TRAVIS_BUILD_DIR/test/travis/nginx.conf"
   - sudo nginx -c "$TRAVIS_BUILD_DIR/test/travis/nginx.conf"
   - curl -i http://localhost:9002
-  - curl -i http://localhost:9002/
+  - curl -i http://localhost:9001
   - sudo ps aux
   - sudo ls -l /proc/*/exe || true
 script:
-  - se-interpreter test/selenium/interpreter_config.json
   - cd cmd && npm install
   - ls -l
   - node rcmd.js
+  - se-interpreter test/selenium/interpreter_config.json
 after_script:
   - echo "nginx/error:"
   - sudo cat /var/log/nginx/error.log
@@ -48,8 +48,7 @@ after_script:
   - echo "config.js:"
   - curl http://localhost:9001/config.js
   - echo "ripple.txt:"
-  - curl http://localhost:9001/ripple.txt
-  - curl http://localhost:9001/ripple.txt
+  - curl -i http://localhost:9001/ripple.txt
 env:
   global: 
     - SAUCE_CONNECT_VERSION=4.3.6
