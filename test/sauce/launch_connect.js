@@ -13,6 +13,18 @@ if (process.env.TRAVIS_JOB_NUMBER) {
     options.tunnelIdentifier = process.env.TRAVIS_JOB_NUMBER;
 }
 
+if (process.env.SAUCE_USERNAME) {
+    options.username = process.env.SAUCE_USERNAME;
+}
+
+if (process.env.SAUCE_ACCESS_KEY) {
+    options.accessKey = process.env.SAUCE_ACCESS_KEY;
+}
+
+process.env.SAUCE_USERNAME = options.username;
+process.env.SAUCE_ACCESS_KEY = options.accessKey;
+
+
 sauceConnectLauncher(options, function (err, sauceConnectProcess) {
 	console.log("Started Sauce Connect Process", err, sauceConnectProcess != null);
     if (err) {

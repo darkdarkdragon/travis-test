@@ -21,6 +21,7 @@ before_install:
 before_script:
   - "cp test/travis/config-travis.js src/js/config.js"
   - "cp test/travis/ripple-travis.txt ripple.txt"
+  - npm install -g se-interpreter
   - ls -l "$TRAVIS_BUILD_DIR"
   - cat "$TRAVIS_BUILD_DIR/test/travis/nginx.conf"
   - sudo nginx -c "$TRAVIS_BUILD_DIR/test/travis/nginx.conf"
@@ -29,6 +30,7 @@ before_script:
   - sudo ps aux
   - sudo ls -l /proc/*/exe || true
 script:
+  - se-interpreter test/selenium/interpreter_config.json
   - cd cmd && npm install
   - ls -l
   - node rcmd.js
