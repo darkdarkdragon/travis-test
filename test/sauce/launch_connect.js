@@ -13,7 +13,7 @@ if (process.env.TRAVIS_JOB_NUMBER) {
     options.tunnelIdentifier = process.env.TRAVIS_JOB_NUMBER;
 }
 
-sauceConnectLauncher(, function (err, sauceConnectProcess) {
+sauceConnectLauncher(options, function (err, sauceConnectProcess) {
 	console.log("Started Sauce Connect Process", err, sauceConnectProcess != null);
     if (err) {
         process.exit(1);
