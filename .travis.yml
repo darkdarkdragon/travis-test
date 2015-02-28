@@ -12,6 +12,10 @@ before_install:
   - sudo apt-get install nginx
   - sudo nginx -s stop
   - npm install -g grunt-cli
+  - node --version
+  - npm --version
+  - grunt --version
+  - ls -l /usr/bin
   - echo "$TRAVIS_BUILD_DIR"
   - echo "$SAUCE_USERNAME"
   - cd test/sauce && npm install
