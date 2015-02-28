@@ -48,5 +48,6 @@ env:
   global: 
     - SAUCE_CONNECT_VERSION=4.3.6
     - SAUCE_USERNAME=tonga
+    - SAUCE_ACCESS_KEY=1553f141-1258-4319-b20d-7743def99fbb
 
 

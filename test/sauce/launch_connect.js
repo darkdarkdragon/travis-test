@@ -17,11 +17,11 @@ if (process.env.SAUCE_USERNAME) {
     options.username = process.env.SAUCE_USERNAME;
 }
 
-/*
+
 if (process.env.SAUCE_ACCESS_KEY) {
     options.accessKey = process.env.SAUCE_ACCESS_KEY;
 }
-*/
+
 
 process.env.SAUCE_USERNAME = options.username;
 process.env.SAUCE_ACCESS_KEY = options.accessKey;
