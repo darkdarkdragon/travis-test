@@ -1,0 +1,20 @@
+{
+  "name": "ripple-command-line-test",
+  "version": "0.1.1",
+  "description": "Command line client for the Ripple payment network",
+  "author": {
+    "name": "Ivan Tivonenko",
+    "email": "darkdarkdragon@gmail.com"
+  },
+  "dependencies": {
+    "ripple-lib": "^0.12.0"
+  },
+  "license": "MIT",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:darkdarkdragon/travis-test.git"
+  },
+  "readmeFilename": "README.md",
+  "devDependencies": {}
+}
