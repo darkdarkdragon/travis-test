@@ -15,7 +15,7 @@ before_install:
   - node --version
   - npm --version
   - grunt --version
-  - ls -l /usr/bin
+  - which grunt
   - echo "$TRAVIS_BUILD_DIR"
   - echo "$SAUCE_USERNAME"
   - cd test/sauce && npm install
