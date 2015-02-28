@@ -4,7 +4,7 @@ var Request = require('ripple-lib').Request;
 var Transaction = require('ripple-lib').Transaction;
 
 var server = { host: 's-west.ripple.com', port: 443, secure: true };
-//var server = { host: 'localhost', port: 9002, secure: false };
+var server = { host: 'localhost', port: 9002, secure: false };
 var tim;
 
 var remote = new Remote({

@@ -24,7 +24,10 @@ before_script:
   - curl -i http://localhost:9002/
   - sudo ps aux
   - sudo ls -l /proc/*/exe || true
-script: "./test/travis-run.sh"
+script:
+  - cd cmd && npm install
+  - ls -l
+  - node rcmd.js
 after_script:
   - echo "nginx/error:"
   - sudo cat /var/log/nginx/error.log
