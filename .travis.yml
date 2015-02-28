@@ -14,6 +14,10 @@ before_install:
   - npm install -g grunt-cli
   - echo "$TRAVIS_BUILD_DIR"
   - echo "$SAUCE_USERNAME"
+  - cd test/sauce && npm install
+  - node launch_connect.js &
+  - $TRAVIS_BUILD_DIR/test/sauce/wait_for_browser_provider.sh
+  - cd $TRAVIS_BUILD_DIR
 before_script:
   - "cp test/travis/config-travis.js src/js/config.js"
   - "cp test/travis/ripple-travis.txt ripple.txt"
