@@ -24,6 +24,8 @@ before_install:
   - node launch_connect.js &
   - $TRAVIS_BUILD_DIR/test/sauce/wait_for_browser_provider.sh
   - cd $TRAVIS_BUILD_DIR
+  - export _r1="${TRAVIS_BUILD_DIR//\//\\/}"
+  - sed -i "s/TRAVIS_BUILD_DIR/${_r1}/g" $TRAVIS_BUILD_DIR/test/travis/nginx.conf
 before_script:
   - "cp test/travis/config-travis.js src/js/config.js"
   - "cp test/travis/ripple-travis.txt ripple.txt"
