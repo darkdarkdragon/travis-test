@@ -39,6 +39,7 @@ script:
   - cd cmd && npm install
   - ls -l
   - node rcmd.js
+  - cd $TRAVIS_BUILD_DIR
   - se-interpreter test/selenium/interpreter_config.json
 after_script:
   - echo "nginx/error:"
