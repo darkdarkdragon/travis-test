@@ -29,7 +29,7 @@ before_install:
 before_script:
   - "cp test/travis/config-travis.js src/js/config.js"
   - "cp test/travis/ripple-travis.txt ripple.txt"
-  - npm install -g se-interpreter
+  - npm install -g darkdarkdragon/se-interpreter
   - ls -l "$TRAVIS_BUILD_DIR"
   - cat "$TRAVIS_BUILD_DIR/test/travis/nginx.conf"
   - sudo nginx -c "$TRAVIS_BUILD_DIR/test/travis/nginx.conf"
@@ -42,7 +42,7 @@ script:
   - ls -l
   - node rcmd.js
   - cd $TRAVIS_BUILD_DIR
-  - se-interpreter test/selenium/interpreter_config_private.json
+  - se-interpreter --hideSetTexValue test/selenium/interpreter_config_private.json
 after_script:
   - echo "nginx/error:"
   - sudo cat /var/log/nginx/error.log

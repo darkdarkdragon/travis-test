@@ -17,7 +17,7 @@
         "type": "id",
         "value": "login_username"
       },
-      "text": "${-FUNDED_USER_NAME}"
+      "text": "${FUNDED_USER_NAME}"
     },
     {
       "type": "setElementText",
