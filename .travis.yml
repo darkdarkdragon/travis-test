@@ -42,7 +42,7 @@ script:
   - ls -l
   - node rcmd.js
   - cd $TRAVIS_BUILD_DIR
-  - se-interpreter --hideSetTexValue test/selenium/interpreter_config_private.json
+  - se-interpreter --hideSetTexValue true test/selenium/interpreter_config_private.json
 after_script:
   - echo "nginx/error:"
   - sudo cat /var/log/nginx/error.log
